@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
+    <script>
+        // Função para atualizar a soma
+        function atualizarSoma() {
+            // Obter os valores dos inputs
+            const num1 = parseFloat(document.getElementById('in1').value) || 0;
+            const num2 = parseFloat(document.getElementById('in2').value) || 0;
+
+            // Calcular a soma
+            const soma = num1 + num2;
+
+            // Atualizar o campo output
+            document.getElementById('isoma').value = soma;
+        }
+
+        // Adicionar evento de input para atualizar a soma em tempo real
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const input1 = document.getElementById('in1');
+            const input2 = document.getElementById('in2');
+
+            input1.addEventListener('input', atualizarSoma);
+            input2.addEventListener('input', atualizarSoma);
+        });
+    </script>
 </head>
 <body>
     <h1>Exemplo de Formulário</h1>
@@ -20,12 +43,12 @@
 
         <p>
             <label for="isoma">Soma: </label>
-            <output></output>
+            <output id="isoma">0</output>
         </p>
 
         <p>
             <input type="submit" value="Enviar">
-            <input type="reset" value="Limpar">
+            <input type="reset" value="Limpar" onclick="atualizarSoma()">
         </p>
     </form>
     

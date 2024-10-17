@@ -4,22 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
+    <style>
+        output {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h1>Exemplo de Formulário</h1>
     <form action="cadastro.php" method="get" autocomplete="on">
-
         <p>
             <label for="inum">Número: </label>
-            <input type="range" name="num" id="inum">
+            <input type="range" name="num" id="inum" min="0" max="10" value="5" oninput="atualizarOutput(this.value)">
+            <output id="ival">5</output>
         </p>
 
         <p>
             <input type="submit" value="Enviar">
-            <input type="reset" value="Limpar">
+            <input type="reset" value="Limpar" onclick="resetOutput()">
         </p>
-
     </form>
-    
+
+    <script>
+        function atualizarOutput(valor) {
+            document.getElementById('ival').innerText = valor;
+        }
+
+        function resetOutput() {
+            document.getElementById('ival').innerText = '5'; // Resetar para o valor inicial
+        }
+    </script>
 </body>
 </html>
